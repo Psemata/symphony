@@ -1,0 +1,3 @@
+mel track = 1;
+mel note_name = "DO";
+mel note_name_2 = "C";

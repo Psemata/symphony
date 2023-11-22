@@ -1,0 +1,676 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> programme
+Rule 1     programme -> statement
+Rule 2     programme -> statement programme
+Rule 3     assignation -> MEL IDENTIFIER EQUALS expression
+Rule 4     assignation -> IDENTIFIER EQUALS expression
+Rule 5     statement -> assignation SEMI_COLON
+Rule 6     statement -> function SEMI_COLON
+Rule 7     statement -> structure
+Rule 8     structure -> RANGE PARENTH_IN expression COMMA expression COMMA expression PARENTH_OUT C_BRACKET_IN programme C_BRACKET_OUT
+Rule 9     expression -> NUMBER
+Rule 10    expression -> STRING
+Rule 11    expression -> IDENTIFIER
+Rule 12    function -> IDENTIFIER PARENTH_IN PARENTH_OUT
+Rule 13    function -> IDENTIFIER PARENTH_IN expression PARENTH_OUT
+Rule 14    function -> IDENTIFIER PARENTH_IN expression COMMA expression COMMA expression PARENTH_OUT
+Rule 15    function -> IDENTIFIER PARENTH_IN expression COMMA expression COMMA expression COMMA expression PARENTH_OUT
+Rule 16    expression -> ADD_OP expression
+Rule 17    expression -> expression ADD_OP expression
+Rule 18    expression -> expression MUL_OP expression
+
+Terminals, with rules where they appear
+
+ADD_OP               : 16 17
+COMMA                : 8 8 14 14 15 15 15
+C_BRACKET_IN         : 8
+C_BRACKET_OUT        : 8
+EQUALS               : 3 4
+IDENTIFIER           : 3 4 11 12 13 14 15
+MEL                  : 3
+MUL_OP               : 18
+NUMBER               : 9
+PARENTH_IN           : 8 12 13 14 15
+PARENTH_OUT          : 8 12 13 14 15
+RANGE                : 8
+SEMI_COLON           : 5 6
+STRING               : 10
+error                : 
+
+Nonterminals, with rules where they appear
+
+assignation          : 5
+expression           : 3 4 8 8 8 13 14 14 14 15 15 15 15 16 17 17 18 18
+function             : 6
+programme            : 2 8 0
+statement            : 1 2
+structure            : 7
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . programme
+    (1) programme -> . statement
+    (2) programme -> . statement programme
+    (5) statement -> . assignation SEMI_COLON
+    (6) statement -> . function SEMI_COLON
+    (7) statement -> . structure
+    (3) assignation -> . MEL IDENTIFIER EQUALS expression
+    (4) assignation -> . IDENTIFIER EQUALS expression
+    (12) function -> . IDENTIFIER PARENTH_IN PARENTH_OUT
+    (13) function -> . IDENTIFIER PARENTH_IN expression PARENTH_OUT
+    (14) function -> . IDENTIFIER PARENTH_IN expression COMMA expression COMMA expression PARENTH_OUT
+    (15) function -> . IDENTIFIER PARENTH_IN expression COMMA expression COMMA expression COMMA expression PARENTH_OUT
+    (8) structure -> . RANGE PARENTH_IN expression COMMA expression COMMA expression PARENTH_OUT C_BRACKET_IN programme C_BRACKET_OUT
+
+    MEL             shift and go to state 6
+    IDENTIFIER      shift and go to state 7
+    RANGE           shift and go to state 8
+
+    programme                      shift and go to state 1
+    statement                      shift and go to state 2
+    assignation                    shift and go to state 3
+    function                       shift and go to state 4
+    structure                      shift and go to state 5
+
+state 1
+
+    (0) S' -> programme .
+
+
+
+state 2
+
+    (1) programme -> statement .
+    (2) programme -> statement . programme
+    (1) programme -> . statement
+    (2) programme -> . statement programme
+    (5) statement -> . assignation SEMI_COLON
+    (6) statement -> . function SEMI_COLON
+    (7) statement -> . structure
+    (3) assignation -> . MEL IDENTIFIER EQUALS expression
+    (4) assignation -> . IDENTIFIER EQUALS expression
+    (12) function -> . IDENTIFIER PARENTH_IN PARENTH_OUT
+    (13) function -> . IDENTIFIER PARENTH_IN expression PARENTH_OUT
+    (14) function -> . IDENTIFIER PARENTH_IN expression COMMA expression COMMA expression PARENTH_OUT
+    (15) function -> . IDENTIFIER PARENTH_IN expression COMMA expression COMMA expression COMMA expression PARENTH_OUT
+    (8) structure -> . RANGE PARENTH_IN expression COMMA expression COMMA expression PARENTH_OUT C_BRACKET_IN programme C_BRACKET_OUT
+
+    $end            reduce using rule 1 (programme -> statement .)
+    C_BRACKET_OUT   reduce using rule 1 (programme -> statement .)
+    MEL             shift and go to state 6
+    IDENTIFIER      shift and go to state 7
+    RANGE           shift and go to state 8
+
+    statement                      shift and go to state 2
+    programme                      shift and go to state 9
+    assignation                    shift and go to state 3
+    function                       shift and go to state 4
+    structure                      shift and go to state 5
+
+state 3
+
+    (5) statement -> assignation . SEMI_COLON
+
+    SEMI_COLON      shift and go to state 10
+
+
+state 4
+
+    (6) statement -> function . SEMI_COLON
+
+    SEMI_COLON      shift and go to state 11
+
+
+state 5
+
+    (7) statement -> structure .
+
+    MEL             reduce using rule 7 (statement -> structure .)
+    IDENTIFIER      reduce using rule 7 (statement -> structure .)
+    RANGE           reduce using rule 7 (statement -> structure .)
+    $end            reduce using rule 7 (statement -> structure .)
+    C_BRACKET_OUT   reduce using rule 7 (statement -> structure .)
+
+
+state 6
+
+    (3) assignation -> MEL . IDENTIFIER EQUALS expression
+
+    IDENTIFIER      shift and go to state 12
+
+
+state 7
+
+    (4) assignation -> IDENTIFIER . EQUALS expression
+    (12) function -> IDENTIFIER . PARENTH_IN PARENTH_OUT
+    (13) function -> IDENTIFIER . PARENTH_IN expression PARENTH_OUT
+    (14) function -> IDENTIFIER . PARENTH_IN expression COMMA expression COMMA expression PARENTH_OUT
+    (15) function -> IDENTIFIER . PARENTH_IN expression COMMA expression COMMA expression COMMA expression PARENTH_OUT
+
+    EQUALS          shift and go to state 13
+    PARENTH_IN      shift and go to state 14
+
+
+state 8
+
+    (8) structure -> RANGE . PARENTH_IN expression COMMA expression COMMA expression PARENTH_OUT C_BRACKET_IN programme C_BRACKET_OUT
+
+    PARENTH_IN      shift and go to state 15
+
+
+state 9
+
+    (2) programme -> statement programme .
+
+    $end            reduce using rule 2 (programme -> statement programme .)
+    C_BRACKET_OUT   reduce using rule 2 (programme -> statement programme .)
+
+
+state 10
+
+    (5) statement -> assignation SEMI_COLON .
+
+    MEL             reduce using rule 5 (statement -> assignation SEMI_COLON .)
+    IDENTIFIER      reduce using rule 5 (statement -> assignation SEMI_COLON .)
+    RANGE           reduce using rule 5 (statement -> assignation SEMI_COLON .)
+    $end            reduce using rule 5 (statement -> assignation SEMI_COLON .)
+    C_BRACKET_OUT   reduce using rule 5 (statement -> assignation SEMI_COLON .)
+
+
+state 11
+
+    (6) statement -> function SEMI_COLON .
+
+    MEL             reduce using rule 6 (statement -> function SEMI_COLON .)
+    IDENTIFIER      reduce using rule 6 (statement -> function SEMI_COLON .)
+    RANGE           reduce using rule 6 (statement -> function SEMI_COLON .)
+    $end            reduce using rule 6 (statement -> function SEMI_COLON .)
+    C_BRACKET_OUT   reduce using rule 6 (statement -> function SEMI_COLON .)
+
+
+state 12
+
+    (3) assignation -> MEL IDENTIFIER . EQUALS expression
+
+    EQUALS          shift and go to state 16
+
+
+state 13
+
+    (4) assignation -> IDENTIFIER EQUALS . expression
+    (9) expression -> . NUMBER
+    (10) expression -> . STRING
+    (11) expression -> . IDENTIFIER
+    (16) expression -> . ADD_OP expression
+    (17) expression -> . expression ADD_OP expression
+    (18) expression -> . expression MUL_OP expression
+
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 17
+    ADD_OP          shift and go to state 21
+
+    expression                     shift and go to state 18
+
+state 14
+
+    (12) function -> IDENTIFIER PARENTH_IN . PARENTH_OUT
+    (13) function -> IDENTIFIER PARENTH_IN . expression PARENTH_OUT
+    (14) function -> IDENTIFIER PARENTH_IN . expression COMMA expression COMMA expression PARENTH_OUT
+    (15) function -> IDENTIFIER PARENTH_IN . expression COMMA expression COMMA expression COMMA expression PARENTH_OUT
+    (9) expression -> . NUMBER
+    (10) expression -> . STRING
+    (11) expression -> . IDENTIFIER
+    (16) expression -> . ADD_OP expression
+    (17) expression -> . expression ADD_OP expression
+    (18) expression -> . expression MUL_OP expression
+
+    PARENTH_OUT     shift and go to state 22
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 17
+    ADD_OP          shift and go to state 21
+
+    expression                     shift and go to state 23
+
+state 15
+
+    (8) structure -> RANGE PARENTH_IN . expression COMMA expression COMMA expression PARENTH_OUT C_BRACKET_IN programme C_BRACKET_OUT
+    (9) expression -> . NUMBER
+    (10) expression -> . STRING
+    (11) expression -> . IDENTIFIER
+    (16) expression -> . ADD_OP expression
+    (17) expression -> . expression ADD_OP expression
+    (18) expression -> . expression MUL_OP expression
+
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 17
+    ADD_OP          shift and go to state 21
+
+    expression                     shift and go to state 24
+
+state 16
+
+    (3) assignation -> MEL IDENTIFIER EQUALS . expression
+    (9) expression -> . NUMBER
+    (10) expression -> . STRING
+    (11) expression -> . IDENTIFIER
+    (16) expression -> . ADD_OP expression
+    (17) expression -> . expression ADD_OP expression
+    (18) expression -> . expression MUL_OP expression
+
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 17
+    ADD_OP          shift and go to state 21
+
+    expression                     shift and go to state 25
+
+state 17
+
+    (11) expression -> IDENTIFIER .
+
+    ADD_OP          reduce using rule 11 (expression -> IDENTIFIER .)
+    MUL_OP          reduce using rule 11 (expression -> IDENTIFIER .)
+    SEMI_COLON      reduce using rule 11 (expression -> IDENTIFIER .)
+    PARENTH_OUT     reduce using rule 11 (expression -> IDENTIFIER .)
+    COMMA           reduce using rule 11 (expression -> IDENTIFIER .)
+
+
+state 18
+
+    (4) assignation -> IDENTIFIER EQUALS expression .
+    (17) expression -> expression . ADD_OP expression
+    (18) expression -> expression . MUL_OP expression
+
+    SEMI_COLON      reduce using rule 4 (assignation -> IDENTIFIER EQUALS expression .)
+    ADD_OP          shift and go to state 26
+    MUL_OP          shift and go to state 27
+
+
+state 19
+
+    (9) expression -> NUMBER .
+
+    ADD_OP          reduce using rule 9 (expression -> NUMBER .)
+    MUL_OP          reduce using rule 9 (expression -> NUMBER .)
+    SEMI_COLON      reduce using rule 9 (expression -> NUMBER .)
+    PARENTH_OUT     reduce using rule 9 (expression -> NUMBER .)
+    COMMA           reduce using rule 9 (expression -> NUMBER .)
+
+
+state 20
+
+    (10) expression -> STRING .
+
+    ADD_OP          reduce using rule 10 (expression -> STRING .)
+    MUL_OP          reduce using rule 10 (expression -> STRING .)
+    SEMI_COLON      reduce using rule 10 (expression -> STRING .)
+    PARENTH_OUT     reduce using rule 10 (expression -> STRING .)
+    COMMA           reduce using rule 10 (expression -> STRING .)
+
+
+state 21
+
+    (16) expression -> ADD_OP . expression
+    (9) expression -> . NUMBER
+    (10) expression -> . STRING
+    (11) expression -> . IDENTIFIER
+    (16) expression -> . ADD_OP expression
+    (17) expression -> . expression ADD_OP expression
+    (18) expression -> . expression MUL_OP expression
+
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 17
+    ADD_OP          shift and go to state 21
+
+    expression                     shift and go to state 28
+
+state 22
+
+    (12) function -> IDENTIFIER PARENTH_IN PARENTH_OUT .
+
+    SEMI_COLON      reduce using rule 12 (function -> IDENTIFIER PARENTH_IN PARENTH_OUT .)
+
+
+state 23
+
+    (13) function -> IDENTIFIER PARENTH_IN expression . PARENTH_OUT
+    (14) function -> IDENTIFIER PARENTH_IN expression . COMMA expression COMMA expression PARENTH_OUT
+    (15) function -> IDENTIFIER PARENTH_IN expression . COMMA expression COMMA expression COMMA expression PARENTH_OUT
+    (17) expression -> expression . ADD_OP expression
+    (18) expression -> expression . MUL_OP expression
+
+    PARENTH_OUT     shift and go to state 29
+    COMMA           shift and go to state 30
+    ADD_OP          shift and go to state 26
+    MUL_OP          shift and go to state 27
+
+
+state 24
+
+    (8) structure -> RANGE PARENTH_IN expression . COMMA expression COMMA expression PARENTH_OUT C_BRACKET_IN programme C_BRACKET_OUT
+    (17) expression -> expression . ADD_OP expression
+    (18) expression -> expression . MUL_OP expression
+
+    COMMA           shift and go to state 31
+    ADD_OP          shift and go to state 26
+    MUL_OP          shift and go to state 27
+
+
+state 25
+
+    (3) assignation -> MEL IDENTIFIER EQUALS expression .
+    (17) expression -> expression . ADD_OP expression
+    (18) expression -> expression . MUL_OP expression
+
+    SEMI_COLON      reduce using rule 3 (assignation -> MEL IDENTIFIER EQUALS expression .)
+    ADD_OP          shift and go to state 26
+    MUL_OP          shift and go to state 27
+
+
+state 26
+
+    (17) expression -> expression ADD_OP . expression
+    (9) expression -> . NUMBER
+    (10) expression -> . STRING
+    (11) expression -> . IDENTIFIER
+    (16) expression -> . ADD_OP expression
+    (17) expression -> . expression ADD_OP expression
+    (18) expression -> . expression MUL_OP expression
+
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 17
+    ADD_OP          shift and go to state 21
+
+    expression                     shift and go to state 32
+
+state 27
+
+    (18) expression -> expression MUL_OP . expression
+    (9) expression -> . NUMBER
+    (10) expression -> . STRING
+    (11) expression -> . IDENTIFIER
+    (16) expression -> . ADD_OP expression
+    (17) expression -> . expression ADD_OP expression
+    (18) expression -> . expression MUL_OP expression
+
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 17
+    ADD_OP          shift and go to state 21
+
+    expression                     shift and go to state 33
+
+state 28
+
+    (16) expression -> ADD_OP expression .
+    (17) expression -> expression . ADD_OP expression
+    (18) expression -> expression . MUL_OP expression
+
+    ADD_OP          reduce using rule 16 (expression -> ADD_OP expression .)
+    MUL_OP          reduce using rule 16 (expression -> ADD_OP expression .)
+    SEMI_COLON      reduce using rule 16 (expression -> ADD_OP expression .)
+    PARENTH_OUT     reduce using rule 16 (expression -> ADD_OP expression .)
+    COMMA           reduce using rule 16 (expression -> ADD_OP expression .)
+
+  ! ADD_OP          [ shift and go to state 26 ]
+  ! MUL_OP          [ shift and go to state 27 ]
+
+
+state 29
+
+    (13) function -> IDENTIFIER PARENTH_IN expression PARENTH_OUT .
+
+    SEMI_COLON      reduce using rule 13 (function -> IDENTIFIER PARENTH_IN expression PARENTH_OUT .)
+
+
+state 30
+
+    (14) function -> IDENTIFIER PARENTH_IN expression COMMA . expression COMMA expression PARENTH_OUT
+    (15) function -> IDENTIFIER PARENTH_IN expression COMMA . expression COMMA expression COMMA expression PARENTH_OUT
+    (9) expression -> . NUMBER
+    (10) expression -> . STRING
+    (11) expression -> . IDENTIFIER
+    (16) expression -> . ADD_OP expression
+    (17) expression -> . expression ADD_OP expression
+    (18) expression -> . expression MUL_OP expression
+
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 17
+    ADD_OP          shift and go to state 21
+
+    expression                     shift and go to state 34
+
+state 31
+
+    (8) structure -> RANGE PARENTH_IN expression COMMA . expression COMMA expression PARENTH_OUT C_BRACKET_IN programme C_BRACKET_OUT
+    (9) expression -> . NUMBER
+    (10) expression -> . STRING
+    (11) expression -> . IDENTIFIER
+    (16) expression -> . ADD_OP expression
+    (17) expression -> . expression ADD_OP expression
+    (18) expression -> . expression MUL_OP expression
+
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 17
+    ADD_OP          shift and go to state 21
+
+    expression                     shift and go to state 35
+
+state 32
+
+    (17) expression -> expression ADD_OP expression .
+    (17) expression -> expression . ADD_OP expression
+    (18) expression -> expression . MUL_OP expression
+
+    ADD_OP          reduce using rule 17 (expression -> expression ADD_OP expression .)
+    SEMI_COLON      reduce using rule 17 (expression -> expression ADD_OP expression .)
+    PARENTH_OUT     reduce using rule 17 (expression -> expression ADD_OP expression .)
+    COMMA           reduce using rule 17 (expression -> expression ADD_OP expression .)
+    MUL_OP          shift and go to state 27
+
+  ! MUL_OP          [ reduce using rule 17 (expression -> expression ADD_OP expression .) ]
+  ! ADD_OP          [ shift and go to state 26 ]
+
+
+state 33
+
+    (18) expression -> expression MUL_OP expression .
+    (17) expression -> expression . ADD_OP expression
+    (18) expression -> expression . MUL_OP expression
+
+    ADD_OP          reduce using rule 18 (expression -> expression MUL_OP expression .)
+    MUL_OP          reduce using rule 18 (expression -> expression MUL_OP expression .)
+    SEMI_COLON      reduce using rule 18 (expression -> expression MUL_OP expression .)
+    PARENTH_OUT     reduce using rule 18 (expression -> expression MUL_OP expression .)
+    COMMA           reduce using rule 18 (expression -> expression MUL_OP expression .)
+
+  ! ADD_OP          [ shift and go to state 26 ]
+  ! MUL_OP          [ shift and go to state 27 ]
+
+
+state 34
+
+    (14) function -> IDENTIFIER PARENTH_IN expression COMMA expression . COMMA expression PARENTH_OUT
+    (15) function -> IDENTIFIER PARENTH_IN expression COMMA expression . COMMA expression COMMA expression PARENTH_OUT
+    (17) expression -> expression . ADD_OP expression
+    (18) expression -> expression . MUL_OP expression
+
+    COMMA           shift and go to state 36
+    ADD_OP          shift and go to state 26
+    MUL_OP          shift and go to state 27
+
+
+state 35
+
+    (8) structure -> RANGE PARENTH_IN expression COMMA expression . COMMA expression PARENTH_OUT C_BRACKET_IN programme C_BRACKET_OUT
+    (17) expression -> expression . ADD_OP expression
+    (18) expression -> expression . MUL_OP expression
+
+    COMMA           shift and go to state 37
+    ADD_OP          shift and go to state 26
+    MUL_OP          shift and go to state 27
+
+
+state 36
+
+    (14) function -> IDENTIFIER PARENTH_IN expression COMMA expression COMMA . expression PARENTH_OUT
+    (15) function -> IDENTIFIER PARENTH_IN expression COMMA expression COMMA . expression COMMA expression PARENTH_OUT
+    (9) expression -> . NUMBER
+    (10) expression -> . STRING
+    (11) expression -> . IDENTIFIER
+    (16) expression -> . ADD_OP expression
+    (17) expression -> . expression ADD_OP expression
+    (18) expression -> . expression MUL_OP expression
+
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 17
+    ADD_OP          shift and go to state 21
+
+    expression                     shift and go to state 38
+
+state 37
+
+    (8) structure -> RANGE PARENTH_IN expression COMMA expression COMMA . expression PARENTH_OUT C_BRACKET_IN programme C_BRACKET_OUT
+    (9) expression -> . NUMBER
+    (10) expression -> . STRING
+    (11) expression -> . IDENTIFIER
+    (16) expression -> . ADD_OP expression
+    (17) expression -> . expression ADD_OP expression
+    (18) expression -> . expression MUL_OP expression
+
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 17
+    ADD_OP          shift and go to state 21
+
+    expression                     shift and go to state 39
+
+state 38
+
+    (14) function -> IDENTIFIER PARENTH_IN expression COMMA expression COMMA expression . PARENTH_OUT
+    (15) function -> IDENTIFIER PARENTH_IN expression COMMA expression COMMA expression . COMMA expression PARENTH_OUT
+    (17) expression -> expression . ADD_OP expression
+    (18) expression -> expression . MUL_OP expression
+
+    PARENTH_OUT     shift and go to state 41
+    COMMA           shift and go to state 40
+    ADD_OP          shift and go to state 26
+    MUL_OP          shift and go to state 27
+
+
+state 39
+
+    (8) structure -> RANGE PARENTH_IN expression COMMA expression COMMA expression . PARENTH_OUT C_BRACKET_IN programme C_BRACKET_OUT
+    (17) expression -> expression . ADD_OP expression
+    (18) expression -> expression . MUL_OP expression
+
+    PARENTH_OUT     shift and go to state 42
+    ADD_OP          shift and go to state 26
+    MUL_OP          shift and go to state 27
+
+
+state 40
+
+    (15) function -> IDENTIFIER PARENTH_IN expression COMMA expression COMMA expression COMMA . expression PARENTH_OUT
+    (9) expression -> . NUMBER
+    (10) expression -> . STRING
+    (11) expression -> . IDENTIFIER
+    (16) expression -> . ADD_OP expression
+    (17) expression -> . expression ADD_OP expression
+    (18) expression -> . expression MUL_OP expression
+
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 17
+    ADD_OP          shift and go to state 21
+
+    expression                     shift and go to state 43
+
+state 41
+
+    (14) function -> IDENTIFIER PARENTH_IN expression COMMA expression COMMA expression PARENTH_OUT .
+
+    SEMI_COLON      reduce using rule 14 (function -> IDENTIFIER PARENTH_IN expression COMMA expression COMMA expression PARENTH_OUT .)
+
+
+state 42
+
+    (8) structure -> RANGE PARENTH_IN expression COMMA expression COMMA expression PARENTH_OUT . C_BRACKET_IN programme C_BRACKET_OUT
+
+    C_BRACKET_IN    shift and go to state 44
+
+
+state 43
+
+    (15) function -> IDENTIFIER PARENTH_IN expression COMMA expression COMMA expression COMMA expression . PARENTH_OUT
+    (17) expression -> expression . ADD_OP expression
+    (18) expression -> expression . MUL_OP expression
+
+    PARENTH_OUT     shift and go to state 45
+    ADD_OP          shift and go to state 26
+    MUL_OP          shift and go to state 27
+
+
+state 44
+
+    (8) structure -> RANGE PARENTH_IN expression COMMA expression COMMA expression PARENTH_OUT C_BRACKET_IN . programme C_BRACKET_OUT
+    (1) programme -> . statement
+    (2) programme -> . statement programme
+    (5) statement -> . assignation SEMI_COLON
+    (6) statement -> . function SEMI_COLON
+    (7) statement -> . structure
+    (3) assignation -> . MEL IDENTIFIER EQUALS expression
+    (4) assignation -> . IDENTIFIER EQUALS expression
+    (12) function -> . IDENTIFIER PARENTH_IN PARENTH_OUT
+    (13) function -> . IDENTIFIER PARENTH_IN expression PARENTH_OUT
+    (14) function -> . IDENTIFIER PARENTH_IN expression COMMA expression COMMA expression PARENTH_OUT
+    (15) function -> . IDENTIFIER PARENTH_IN expression COMMA expression COMMA expression COMMA expression PARENTH_OUT
+    (8) structure -> . RANGE PARENTH_IN expression COMMA expression COMMA expression PARENTH_OUT C_BRACKET_IN programme C_BRACKET_OUT
+
+    MEL             shift and go to state 6
+    IDENTIFIER      shift and go to state 7
+    RANGE           shift and go to state 8
+
+    programme                      shift and go to state 46
+    statement                      shift and go to state 2
+    assignation                    shift and go to state 3
+    function                       shift and go to state 4
+    structure                      shift and go to state 5
+
+state 45
+
+    (15) function -> IDENTIFIER PARENTH_IN expression COMMA expression COMMA expression COMMA expression PARENTH_OUT .
+
+    SEMI_COLON      reduce using rule 15 (function -> IDENTIFIER PARENTH_IN expression COMMA expression COMMA expression COMMA expression PARENTH_OUT .)
+
+
+state 46
+
+    (8) structure -> RANGE PARENTH_IN expression COMMA expression COMMA expression PARENTH_OUT C_BRACKET_IN programme . C_BRACKET_OUT
+
+    C_BRACKET_OUT   shift and go to state 47
+
+
+state 47
+
+    (8) structure -> RANGE PARENTH_IN expression COMMA expression COMMA expression PARENTH_OUT C_BRACKET_IN programme C_BRACKET_OUT .
+
+    MEL             reduce using rule 8 (structure -> RANGE PARENTH_IN expression COMMA expression COMMA expression PARENTH_OUT C_BRACKET_IN programme C_BRACKET_OUT .)
+    IDENTIFIER      reduce using rule 8 (structure -> RANGE PARENTH_IN expression COMMA expression COMMA expression PARENTH_OUT C_BRACKET_IN programme C_BRACKET_OUT .)
+    RANGE           reduce using rule 8 (structure -> RANGE PARENTH_IN expression COMMA expression COMMA expression PARENTH_OUT C_BRACKET_IN programme C_BRACKET_OUT .)
+    $end            reduce using rule 8 (structure -> RANGE PARENTH_IN expression COMMA expression COMMA expression PARENTH_OUT C_BRACKET_IN programme C_BRACKET_OUT .)
+    C_BRACKET_OUT   reduce using rule 8 (structure -> RANGE PARENTH_IN expression COMMA expression COMMA expression PARENTH_OUT C_BRACKET_IN programme C_BRACKET_OUT .)
+

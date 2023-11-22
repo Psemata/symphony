@@ -1,0 +1,4 @@
+mel track = 1;
+
+change_track(0);
+change_track(track);

@@ -1,0 +1,19 @@
+mel time = 1;
+mel duration = 1;
+mel volume = 100;
+
+add_note("DO", time, duration, volume);
+time = time + 1;
+add_note("RE", time, duration, volume);
+time = time + 1;
+add_note("MI", time, duration, volume);
+time = time + 1;
+add_note("FA", time, duration, volume);
+time = time + 1;
+add_note("SOL", time, duration, volume);
+time = time + 1;
+add_note("LA", time, duration, volume);
+time = time + 1;
+add_note("SI", time, duration, volume);
+time = time + 1;
+add_note("DO", time, duration, volume);

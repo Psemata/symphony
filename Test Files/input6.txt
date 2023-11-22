@@ -1,0 +1,40 @@
+list_instrument();
+change_instrument(20);
+
+mel track = 0;
+mel channel = 1;
+mel time = 0;
+mel duration = 1;
+mel tempo = 60;
+mel volume = 100;
+
+add_tempo(track, time, tempo);
+
+add_note(60, time, duration, volume);
+time = time + 1;
+add_note(62, time, duration, volume);
+time = time + 1;
+add_note(64, time, duration, volume);
+time = time + 1;
+add_note(65, time, duration, volume);
+time = time + 1;
+add_note(67, time, duration, volume);
+time = time + 1;
+add_note(69, time, duration, volume);
+time = time + 1;
+add_note(71, time, duration, volume);
+time = time + 1;
+add_note(72, time, duration, volume);
+time = time + 1;
+
+change_octave(6);
+change_track(1);
+
+mel base = 10;
+time = 0;
+
+range(0, 10, 1) {
+    add_note(base, time, duration, volume);
+    time = time + 1;
+    base = base + 10;
+}

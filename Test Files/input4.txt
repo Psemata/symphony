@@ -1,0 +1,10 @@
+mel note_name = "DO";
+mel time = 0;
+mel duration = 1;
+mel volume = 100;
+
+change_octave(8);
+add_note("DO", time, duration, volume);
+add_note("C", time, duration, volume);
+add_note(1, time, duration, volume);
+add_note(note_name, time, duration, volume);
