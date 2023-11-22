@@ -1,37 +1,39 @@
 # Symphony
-Symphony est un langage compilé de création de musique et de sons MIDI.<br>
-L'utilisateur pourra employer des fonctions du langage pour générer des notes d’instruments différents sur multiples pistes pour créer un fichier final contenant son œuvre.<br>
-Le travail effectué est :<br>
-- Création d'un analyseur lexical
-- Création d'un analyseur syntaxique
-- Création d'un compilateur qui va transformer notre langage en python pour ensuite générer du son
-- Gestion des erreurs
+*Symphony* is a compiled language designed for the creation of music and MIDI sounds.
 
-## Conditions
-Pour que le langage Symphony fonctionne, il faut installer quelques packages importants pour python.<br>
-- pydot --> Installation : pip install pydot
-- ply --> Installation : pip install ply
-- os --> Installation : déjà installé de base
-- operator --> Installation : déjà installé de base (pip install pyoperators sinon)
-- re --> Installation : déjà installé de base (pip install regex sinon)
-- midiutil --> Installation : pip install MIDIUtil & Utilisation : from midiutil import MIDIFile
-- graphviz --> Installation : pip install graphviz (Si pas installé sous forme d'exe)
+Users can employ language functions to generate notes for different instruments across multiple tracks, ultimately creating a final file that encapsulates their musical composition.
+
+The work accomplished includes:
+- Creation of a lexical analyzer
+- Creation of a syntax analyzer
+- Development of a compiler that transforms our language into Python and subsequently generates sound
+- Error handling
+
+## Requirements
+To ensure the Symphony language functions properly, several important Python packages need to be installed:
+- pydot --> Installation: `pip install pydot`
+- ply --> Installation: `pip install ply`
+- os --> Already installed by default
+- operator --> Already installed by default (install with `pip install pyoperators` if needed)
+- re --> Already installed by default (install with `pip install regex` if needed)
+- midiutil --> Installation: `pip install MIDIUtil` & Usage: `from midiutil import MIDIFile`
+- graphviz --> Installation: `pip install graphviz` (If not installed as an executable)
 
 ## Installation
-Pour installer symphony, il faut récupérer les différents fichiers correspondants au langage.<br>
+To install Symphony, retrieve the various language-related files:
 - AST.py
 - symphony_ley.py
 - symphony_parser.py
 - symphony_compiler.py
 
-Pour faire fonctionner le langage, il suffit donc de générer un fichier du langage Symphony (Sous forme .txt ou autre) et de le faire passer au compilateur.<br>
-Lorsque l'on lance le compilateur, un fichier .midi sera généré et pourra être écouté via n'importe quel lecteur.<br>
+To run the language, generate a Symphony language file (in .txt or another format) and pass it to the compiler.
+When the compiler is executed, a .midi file will be generated and can be played using any media player.
 
 ### VLC
-Pour vlc, il faut installer un plugin permettant de lire le format midi.<br>
-https://ourcodeworld.com/articles/read/1170/how-to-play-midi-files-on-the-vlc-media-player-3-0-8<br>
-https://wiki.videolan.org/Midi/<br>
+For VLC, you need to install a plugin to play MIDI files:
+- Plugin Installation Guide: [How to play MIDI files on the VLC Media Player 3.0.8](https://ourcodeworld.com/articles/read/1170/how-to-play-midi-files-on-the-vlc-media-player-3-0-8)
+- Additional Information: [VLC Midi Plugin Wiki](https://wiki.videolan.org/Midi/)
 
-## Membres
-Bruno Costa<br>
-Diogo Lopes Da Silva
+## Team Members
+* Bruno Costa, [@Psemata](https://github.com/Psemata).
+* Diogo Lopes Da Silva, [@Ultrasic](https://github.com/Ultrasic).
